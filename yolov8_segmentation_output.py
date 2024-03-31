@@ -5,7 +5,7 @@ from ultralytics import YOLO
 model = YOLO('yolov8n-seg.pt')
 
 # Path to the video file
-video_path = r"C:\python\Data\YOLO\cars.mp4"
+video_path = r"cars.mp4"
 cap = cv2.VideoCapture(video_path)
 
 while cap.isOpened():
