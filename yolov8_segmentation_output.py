@@ -31,3 +31,21 @@ while cap.isOpened():
 
 cap.release()
 cv2.destroyAllWindows()
+
+# Run detection on the frame
+results = model(frame)
+
+# Process the results (just one result per frame in practice)
+for result in results:
+    # Filter boxes with confidence >= 0.75
+    # Access confidence scores correctly
+    boxes = result.boxes
+    mask = boxes.conf >= 0.75
+    filtered_boxes = boxes[mask]
+    
+    # Create a new result with only the filtered boxes
+    # (This depends on how the YOLO implementation handles results)
+    
+    # Render the filtered results
+    annotated_frame = result.plot()  # Method name might be different based on YOLO version
+    cv2.imshow("YOLOv8 Inference", annotated_frame)
